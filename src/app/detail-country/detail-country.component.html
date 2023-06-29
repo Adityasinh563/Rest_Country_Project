@@ -1,0 +1,76 @@
+<div class="container">
+    <button class="button" (click)="onBackClick()">
+        <i class="fa fa-angle-left"></i> Back
+    </button>
+
+    <div class="detail">
+        <div class="image">
+            <img src="{{ data?.flags?.svg }}" alt="flag">
+        </div>
+
+        <div class="information">
+            <h2>{{ data?.name?.official }}</h2>
+
+            <div class="row">
+                <div class="info-group">
+                    <h4>Name:</h4>
+                    <span> {{ data?.name?.common }} </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="info-group">
+                    <h4>Population:</h4>
+                    <span>{{ data?.population | number }}</span>
+                </div>
+
+                <div class="info-group">
+                    <h4>Capital:</h4>
+                    <span>{{ data?.capital ? data?.capital[0] : "" }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="info-group">
+                    <h4>Region:</h4>
+                    <span>{{ data?.region }}</span>
+                </div>
+
+                <div class="info-group">
+                    <h4>Sub Region:</h4>
+                    <span>{{ data?.subregion }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="info-group">
+                    <h4>Currencies</h4>
+                    <span> {{ this?.currencies }} </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="info-group">
+                    <h4>Languages:</h4>
+                    <span> {{ this?.languages }} </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="info-group">
+                    <h4>Border Countries:</h4>
+                    <span *ngFor="let item of data?.borders">
+                        <span> {{ item }},</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <h4>Google Map Link:</h4>
+                <span>
+                    <a target="_blank" href="{{ data?.maps?.googleMaps }}">Click Here</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

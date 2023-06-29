@@ -1,0 +1,26 @@
+<div class="filter" [formGroup]="form">
+    <div class="search">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search" #input (input)="this.searchByName.next(input.value)" [formControlName]="'search'">
+    </div>
+    <div class="dropdown">
+        <select (ngModelChange)="onDropDownChange()" [formControlName]="'dropDown'">
+            <option value="">Filter By Region</option>
+            <option value="africa">Africa</option>
+            <option value="america">America</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+        </select>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container" *ngFor="let item of this.data" (click)="onCardClick(item?.name?.common)">
+        <img class="image" src="{{ item?.flags?.png }}">
+        <h3>{{ item?.name?.common }}</h3>
+        <p> <span>Population : </span> {{ item?.population | currency : '' : '' }}</p>
+        <p> <span>Region : </span> {{ item?.region }}</p>
+        <p> <span>Capital : </span> {{ item?.capital ? item?.capital[0] : "" }}</p>
+    </div>
+</div>
